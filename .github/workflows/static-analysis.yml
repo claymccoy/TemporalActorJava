@@ -1,0 +1,86 @@
+name: Static Analysis
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  static-analysis:
+    name: Static Code Analysis
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v2
+      with:
+        gradle-version: wrapper
+        
+    - name: Run SpotBugs analysis
+      run: ./gradlew spotbugsMain --no-daemon
+      
+    - name: Run PMD analysis
+      run: ./gradlew pmdMain --no-daemon
+      
+    - name: Run Checkstyle
+      run: ./gradlew checkstyleMain --no-daemon
+      
+    - name: Upload SpotBugs results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: spotbugs-results
+        path: build/reports/spotbugs/
+        
+    - name: Upload PMD results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: pmd-results
+        path: build/reports/pmd/
+        
+    - name: Upload Checkstyle results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: checkstyle-results
+        path: build/reports/checkstyle/
+
+  security-scan:
+    name: Security Vulnerability Scan
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v2
+      with:
+        gradle-version: wrapper
+        
+    - name: Run OWASP dependency check
+      run: ./gradlew dependencyCheckAnalyze --no-daemon
+      
+    - name: Upload security scan results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: security-scan-results
+        path: build/reports/dependency-check-report.*

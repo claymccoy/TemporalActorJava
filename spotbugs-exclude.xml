@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+    <!-- Exclude test classes -->
+    <Match>
+        <Class name="~.*Test.*"/>
+    </Match>
+    
+    <!-- Exclude generated classes -->
+    <Match>
+        <Class name="~.*\$.*"/>
+    </Match>
+    
+    <!-- Exclude specific false positives that are common in Spring Boot apps -->
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2"/>
+    </Match>
+    
+    <!-- Exclude serialization warnings for DTOs -->
+    <Match>
+        <Bug pattern="SE_NO_SERIALVERSIONID"/>
+        <Class name="~.*\..*Record"/>
+    </Match>
+</FindBugsFilter>
