@@ -36,21 +36,21 @@ jobs:
       run: ./gradlew checkstyleMain --no-daemon
       
     - name: Upload SpotBugs results
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       if: always()
       with:
         name: spotbugs-results
         path: build/reports/spotbugs/
         
     - name: Upload PMD results
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       if: always()
       with:
         name: pmd-results
         path: build/reports/pmd/
         
     - name: Upload Checkstyle results
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       if: always()
       with:
         name: checkstyle-results
@@ -79,7 +79,7 @@ jobs:
       run: ./gradlew dependencyCheckAnalyze --no-daemon
       
     - name: Upload security scan results
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       if: always()
       with:
         name: security-scan-results
