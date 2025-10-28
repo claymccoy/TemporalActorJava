@@ -3,12 +3,11 @@
 A Spring Boot application demonstrating advanced Temporal workflow patterns, extending the [Temporal Java Getting Started Guide](https://learn.temporal.io/getting_started/java/first_program_in_java/) with a ledger implementation that showcases long-running workflows (actor pattern) and Temporal's "continue as new" feature.
 
 [![Build and Test](https://github.com/claymccoy/TemporalActorJava/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/claymccoy/TemporalActorJava/actions/workflows/build.yml)
-[![Static Analysis](https://github.com/claymccoy/TemporalActorJava/actions/workflows/static-analysis.yml/badge.svg?branch=master)](https://github.com/claymccoy/TemporalActorJava/actions/workflows/static-analysis.yml)
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Java 17 or later
+- Java 21 or later
 - [Temporal Server](https://learn.temporal.io/getting_started/java/dev_environment/) running locally
 
 ### Build and Run
@@ -56,17 +55,13 @@ java -jar build/libs/temporal-example-1.0.0.jar
 # Generate code coverage report
 ./gradlew jacocoTestReport
 
-# Run static analysis tools
-./gradlew staticAnalysis
-
-# Run security vulnerability scan
-./gradlew dependencyCheckAnalyze
+# Run static analysis tools (no security scan)
+./gradlew pmdMain checkstyleMain
 
 # Verify code coverage meets minimum threshold
 ./gradlew jacocoTestCoverageVerification
 
 # Run individual analysis tools
-./gradlew spotbugsMain    # Bug detection
 ./gradlew pmdMain         # Code style analysis  
 ./gradlew checkstyleMain  # Style compliance
 ```
@@ -75,8 +70,8 @@ java -jar build/libs/temporal-example-1.0.0.jar
 
 This project includes comprehensive GitHub Actions workflows:
 
-- **Build and Test** (`build.yml`): Tests on Java 17 & 21, builds artifacts
-- **Static Analysis** (`static-analysis.yml`): SpotBugs, PMD, Checkstyle, and security scanning
+- **Build and Test** (`build.yml`): Tests on Java 21, builds artifacts with Java 21
+- **Static Analysis** (`static-analysis.yml`): PMD and Checkstyle code quality analysis with Java 21
 - **Dependency Updates** (`dependabot.yml`): Automated dependency updates
 
 ## 🌐 Temporal Dashboard

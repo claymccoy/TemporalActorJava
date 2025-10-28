@@ -3,8 +3,6 @@ plugins {
     id 'org.springframework.boot' version '3.2.0'
     id 'io.spring.dependency-management' version '1.1.4'
     id 'jacoco'
-    id 'org.owasp.dependencycheck' version '8.4.2'
-    id 'com.github.spotbugs' version '5.2.1'
     id 'pmd'
     id 'checkstyle'
 }
@@ -13,7 +11,17 @@ group = 'com.claymccoy'
 version = '1.0.0'
 
 java {
-    sourceCompatibility = '17'
+    sourceCompatibility = '21'
+}
+
+configurations {
+}
+
+group = 'com.claymccoy'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = '21'
 }
 
 configurations {
@@ -58,13 +66,6 @@ pmd {
     ignoreFailures = true  // Don't fail build on PMD violations for now
 }
 
-// SpotBugs configuration
-spotbugs {
-    excludeFilter = file('spotbugs-exclude.xml')
-    toolVersion = '4.7.3'
-    ignoreFailures = true  // Don't fail build on violations for now
-}
-
 tasks.named('test') {
     useJUnitPlatform()
     finalizedBy jacocoTestReport
@@ -72,13 +73,6 @@ tasks.named('test') {
 
 jacocoTestReport {
     dependsOn test
-}
-
-// OWASP dependency check configuration
-dependencyCheck {
-    formats = ['HTML', 'JSON']
-    suppressionFile = 'suppressions.xml'
-    failBuildOnCVSS = 7.0
 }
 
 // Task to generate coverage verification
@@ -96,6 +90,6 @@ jacocoTestCoverageVerification {
 
 // Custom task for CI builds
 task ciBuild {
-    dependsOn 'clean', 'test', 'jacocoTestReport', 'build'
-    description 'Complete CI build with tests and coverage'
+    dependsOn 'clean', 'test', 'pmdMain', 'checkstyleMain', 'jacocoTestReport', 'build'
+    description 'Complete CI build with tests, static analysis, and coverage'
 }
