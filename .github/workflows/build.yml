@@ -1,0 +1,63 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master ]
+
+# Add permissions for test reporting
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+
+jobs:
+  test:
+    name: Test on Java 21
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v2
+      with:
+        gradle-version: wrapper
+        
+    - name: Run CI build (tests + static analysis + coverage)
+      run: ./gradlew ciBuild --no-daemon
+      
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        files: |
+          build/test-results/test/*.xml
+        check_name: "Test Results (Java 21)"
+        comment_title: "Test Results (Java 21)"
+        
+    - name: Upload test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results-java-21
+        path: |
+          build/reports/tests/
+          build/test-results/
+          
+    - name: Upload static analysis results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: static-analysis-results
+        path: |
+          build/reports/pmd/
+          build/reports/checkstyle/
