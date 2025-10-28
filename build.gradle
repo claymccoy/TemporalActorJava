@@ -37,7 +37,7 @@ dependencies {
     implementation 'io.temporal:temporal-sdk:1.27.0'
 
     // Utilities
-    implementation 'com.google.guava:guava:32.1.3-jre'
+    implementation 'com.google.guava:guava:33.5.0-jre'
 
     // Test dependencies
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
