@@ -1,4 +1,4 @@
-package com.claymccoy.meteor.shower.moneytransfer;
+package com.claymccoy.moneytransfer;
 
 import io.temporal.activity.ActivityInterface;
 import io.temporal.activity.ActivityMethod;

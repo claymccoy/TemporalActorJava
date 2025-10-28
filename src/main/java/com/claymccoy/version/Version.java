@@ -1,4 +1,4 @@
-package com.claymccoy.meteor.shower.version;
+package com.claymccoy.version;
 
 import static java.util.Objects.requireNonNullElse;
 

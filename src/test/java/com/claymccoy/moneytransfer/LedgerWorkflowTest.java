@@ -1,4 +1,4 @@
-package com.claymccoy.meteor.shower.moneytransfer;
+package com.claymccoy.moneytransfer;
 
 import com.google.common.collect.ImmutableList;
 import io.temporal.client.WorkflowClient;

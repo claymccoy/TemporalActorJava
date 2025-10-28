@@ -45,9 +45,6 @@ docker run -p 7233:7233 -p 8233:8233 temporalio/auto-setup:latest
 
 # Continuous testing
 ./gradlew test --continuous
-
-# Run with coverage
-./gradlew test jacocoTestReport
 ```
 
 ### Code Quality

@@ -1,4 +1,4 @@
-package com.claymccoy.meteor.shower.moneytransfer;
+package com.claymccoy.moneytransfer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

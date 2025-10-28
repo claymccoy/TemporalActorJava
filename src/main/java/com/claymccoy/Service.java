@@ -1,6 +1,6 @@
-package com.claymccoy.meteor.shower;
+package com.claymccoy;
 
-import com.claymccoy.meteor.shower.moneytransfer.MoneyTransferWorker;
+import com.claymccoy.moneytransfer.MoneyTransferWorker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

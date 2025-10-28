@@ -1,4 +1,4 @@
-package com.claymccoy.meteor.shower.temporal;
+package com.claymccoy.temporal;
 
 import io.temporal.client.WorkflowClient;
 

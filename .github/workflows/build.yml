@@ -61,4 +61,3 @@ jobs:
         path: |
           build/reports/pmd/
           build/reports/checkstyle/
-          build/reports/jacoco/

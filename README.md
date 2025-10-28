@@ -43,23 +43,14 @@ java -jar build/libs/temporal-example-1.0.0.jar
 # Run all tests
 ./gradlew test
 
-# Run tests with coverage
-./gradlew test jacocoTestReport
-
 # Run CI build (includes tests, coverage, and security checks)
 ./gradlew ciBuild
 ```
 
 ### Code Quality
 ```bash
-# Generate code coverage report
-./gradlew jacocoTestReport
-
 # Run static analysis tools (no security scan)
 ./gradlew pmdMain checkstyleMain
-
-# Verify code coverage meets minimum threshold
-./gradlew jacocoTestCoverageVerification
 
 # Run individual analysis tools
 ./gradlew pmdMain         # Code style analysis  

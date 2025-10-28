@@ -1,8 +1,8 @@
-package com.claymccoy.meteor.shower.moneytransfer;
+package com.claymccoy.moneytransfer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.claymccoy.meteor.shower.temporal.TemporalConfig;
+import com.claymccoy.temporal.TemporalConfig;
 import io.temporal.worker.WorkerFactory;
 
 @Component

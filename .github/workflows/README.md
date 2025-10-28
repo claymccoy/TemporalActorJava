@@ -90,10 +90,6 @@ Located at `.github/pull_request_template.md`, provides:
 # Run only static analysis
 ./gradlew staticAnalysis
 
-# Generate coverage report
-./gradlew jacocoTestReport
-open build/reports/jacoco/test/html/index.html
-
 # Run security scan
 ./gradlew dependencyCheckAnalyze
 open build/reports/dependency-check-report.html

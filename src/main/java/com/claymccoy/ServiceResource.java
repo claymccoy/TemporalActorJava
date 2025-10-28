@@ -1,7 +1,7 @@
-package com.claymccoy.meteor.shower;
+package com.claymccoy;
 
-import com.claymccoy.meteor.shower.moneytransfer.LedgerService;
-import com.claymccoy.meteor.shower.moneytransfer.LedgerWorkflow;
+import com.claymccoy.moneytransfer.LedgerService;
+import com.claymccoy.moneytransfer.LedgerWorkflow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

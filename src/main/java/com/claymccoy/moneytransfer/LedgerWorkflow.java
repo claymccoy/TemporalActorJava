@@ -1,4 +1,4 @@
-package com.claymccoy.meteor.shower.moneytransfer;
+package com.claymccoy.moneytransfer;
 
 import io.temporal.workflow.QueryMethod;
 import io.temporal.workflow.UpdateMethod;

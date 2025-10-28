@@ -1,6 +1,6 @@
-package com.claymccoy.meteor.shower.moneytransfer;
+package com.claymccoy.moneytransfer;
 
-import com.claymccoy.meteor.shower.temporal.TemporalConfig;
+import com.claymccoy.temporal.TemporalConfig;
 import io.temporal.client.WorkflowClient;
 import io.temporal.serviceclient.WorkflowServiceStubs;
 import org.springframework.context.annotation.Bean;
